@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <meta http-equiv="content-language" content="pt-br">
+  <title>KATA LUZES DE NATAL</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    html {
+      height: 100%;
+      width: 100%;
+    }
+
+    p {
+      margin: -5px 0;
+      font-size: 50%;
+    }
+  </style>
+</head>
+
+<body>
+<H5>Exercício do site https://kata-log.rocks/christmas-lights-kata</H5>
+  <script src="script.js" ></script>
+  <script language='javascript'>
+      //● DESLIGADO
+    //○ LIGADO
+    //Cria a matriz painel com 10 x 10 com zeros em tudo
+    const painel = new Array(1000).fill().map(() => new Array(1000).fill(0));
+
+
+    //Teste ligar  x = 0 até y = 1, deve deixar os primeiros 4 elementos ligados
+    function modifica(matriz, startX, startY, endX, endY, comando) {
+      //matriz a ser modificada
+      //c_x coordenada em x
+      //c_y coordenada em y
+      //comando ação a executar
+      for (let i = startX; i <= endX; i++) {
+        for (let j = startY; j <= endY; j++) {
+          switch (comando) {
+            case 'LIGAR': //"LIGAR"
+              matriz[i][j] = 1
+              break;
+
+            case 'DESLIGAR': //"DESLIGAR"
+              matriz[i][j] = 0
+              break;
+
+            case 'MUDAR': //"MUDAR"
+              if (matriz[i][j] == 1) {
+				  matriz[i][j] = 0}
+              else {
+				  matriz[i][j] = 1}
+			  break;
+          }
+        }
+      }
+    }
+
+    modifica(painel,887,9,959,629,'LIGAR')
+	modifica(painel,454,398, 844,448,'LIGAR')
+	modifica(painel,539,243, 559,965,'DESLIGAR')
+	modifica(painel,370,819,676,868,'DESLIGAR')
+	modifica(painel,145,40,370,997,'DESLIGAR')
+	modifica(painel,301,3,808,453,'DESLIGAR')
+	modifica(painel,351,678 , 951,908,'LIGAR')
+	modifica(painel,720,196 , 897,994,'MUDAR')
+	modifica(painel,831,394 , 904,860,'MUDAR')
+	
+	
+	
+
+
+    //Imprime matriz de forma estruturada
+    for (var i = 0; i < painel.length; i++) {
+      document.write('<p>')
+      for (var j = 0; j < painel[i].length; j++) {
+        if (painel[i][j] == 0) {
+          document.write('●') //ZERO DESLIGADO
+        } else {
+          document.write('○'); //UM LIGADO
+        }
+      }
+      document.write("</p>");
+    }
+
+  </script>
+</body>
+
+</html>
